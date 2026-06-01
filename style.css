@@ -1,0 +1,71 @@
+:root {
+    --primary: #2b6cb0;
+    --success: #38a169;
+    --danger: #e53e3e;
+    --background: #f7fafc;
+    --card: #ffffff;
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background-color: var(--background);
+    margin: 0;
+    padding: 20px;
+    color: #2d3748;
+}
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.dashboard-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+@media (min-width: 768px) {
+    .dashboard-layout {
+        grid-template-columns: 2fr 1fr;
+    }
+}
+form, article, .controls-bar {
+    background: var(--card);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0 ,0.1);
+    margin-bottom: 20px;
+}
+input, textarea, select, button {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    background: var(--primary);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+}
+
+button:hover {
+    opacity: 0.8;
+
+}
+
+.vote-buttons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.vote-btn {
+    width: auto;
+    padding: 5px 15px;
+}
