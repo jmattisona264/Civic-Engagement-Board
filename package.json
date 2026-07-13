@@ -1,0 +1,37 @@
+{
+  "name": "civic-engagement-board",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmattisona264/Civic-Engagement-Board.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jmattisona264/Civic-Engagement-Board/issues"
+  },
+  "homepage": "https://github.com/jmattisona264/Civic-Engagement-Board#readme",
+  "dependencies": {
+    "@prisma/client": "^7.8.0",
+    "next": "^16.2.10",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/react": "^19.0.0",
+    "prisma": "^7.8.0",
+    "typescript": "^5.4.0"
+  }
+}

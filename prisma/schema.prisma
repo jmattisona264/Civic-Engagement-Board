@@ -1,0 +1,25 @@
+datasource db {
+  provider = "postgresql"
+  
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Model representing community reported maintenance issues
+model Issue {
+  id        Int      @id @default(autoincrement())
+  title     String
+  desc      String
+  category  String
+  votes     Int      @default(0)
+  createdAt DateTime @default(now())
+}
+
+// Model representing municipal timeline events
+model Event {
+  id    Int      @id @default(autoincrement())
+  title String
+  date  String   // Stored as date string matching standard date HTML inputs
+}

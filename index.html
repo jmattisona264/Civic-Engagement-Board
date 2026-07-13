@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Pulse - Civic Engagement Board</title>
+    <!--
+    The link tag connects the HTML to style.css
+    Basically tells the browser to get the design layout and color properties.-->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!--
+    Contains the main title and subtitle for the digital portal site -->
+
+    <header>
+        <h1> Community Pulse</h1>
+        <p>Your localized community portal</p>
+    </header>
+    <!--
+    Uses the CSS class dashboard layout which triggers the two-column desktop (issues on the left and events on the right)-->
+
+    <main class="dashboard-layout">
+        <section id="issues-section">
+            <h2>Local Issues & Initiatives</h2>
+            <!--
+            Holds the sorting and filtering dropdown menus. -->
+
+            <div class="controls-bar">
+                <!-- Dropdown to filter by category -->
+                <select id="filter-category">
+                    <option value="All">All Categories</option>
+                    <option value="Infrastructure">Infrastructure</option>
+                    <option value="Safety">Public Safety</option>
+                    <option value="Environmental Health">Environmental Health</option>
+                    <option value="Community & Culture">Community</option>
+                    <option value="Public Health">Public Health</option>
+                </select>
+                <!-- Dropdown to reorder the displayed list layout -->
+
+                <select id="sort-order">
+                    <option value="highest-votes">Highest Votes</option>
+                    <option value="newest">Newest First</option>
+                </select>
+            </div>
+            <!-- Lets community members submit a new complaint.
+             Javascript will intercept the event and update the global state. -->
+
+            <form id="issue-form">
+                <h3>Report a New Local Issue</h3>
+                <input type="text" id="issue-title" placeholder="Issue Title (Ex. Pothole on Platinum St.)" required>
+                <textarea id="issue-desc" placeholder="Describe the issue..." required></textarea>
+                <!-- Category picker -->
+                <select id="issue-category" required>
+                    <option value="">Select Category</option>
+                    <option value="Infractructure">Infrastructure</option>
+                    <option value="Safety">Public Safety</option>
+                    <option value="Environment Health">Environmental Health</option>
+                    <option value="Community & Culture">Community</option>
+                    <option value="Public Health">Public Health</option>
+                </select>
+                <button type="submit">Submit Issue</button>
+            </form>
+
+            <!--
+            This container starts empty. The JavaScript will build HTML blocks out of out state data
+            and put the blocks here.
+            -->
+            <div id=""issues-container></div>
+        </section>
+
+        <section id="events-section">
+            <h2>Municipal Event Tracker</h2>
+            <!--
+            Captures a simple calendar title and calendar date constraint. 
+            -->
+
+            <form id="event-form">
+                <h3>Schedule an Event</h3>
+                <input type="text" id="event-title" placeholder="Event Title" required>
+                <input type="date" id="event-date" required>
+                <button type="submit">Add Event</button>
+            </form>
+            <!--
+            An unordered list tag where JavaScript will add event item list tags
+            whenever the page loads or updates.-->
+
+            <ul id="events-container"></ul>
+        </section>
+    </main>
+    <!--
+    Injects the app.js file.-->
+
+    <script src="script.js"></script>
+</body>
+</html>
