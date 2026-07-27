@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/jmattisona264/Civic-Engagement-Board#readme",
   "dependencies": {
-    "@prisma/client": "^7.8.0",
+    "@prisma/client": "^6.19.3",
     "next": "^16.2.10",
     "react": "^19.2.7",
     "react-dom": "^19.2.7"
@@ -31,7 +31,7 @@
   "devDependencies": {
     "@types/node": "^20.11.0",
     "@types/react": "^19.0.0",
-    "prisma": "^7.8.0",
+    "prisma": "^6.19.3",
     "typescript": "^5.4.0"
   }
 }

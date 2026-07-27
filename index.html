@@ -43,8 +43,7 @@
                     <option value="newest">Newest First</option>
                 </select>
             </div>
-            <!-- Lets community members submit a new complaint.
-             Javascript will intercept the event and update the global state. -->
+            <!-- Lets community members submit a new complaint.-->
 
             <form id="issue-form">
                 <h3>Report a New Local Issue</h3>
@@ -63,17 +62,14 @@
             </form>
 
             <!--
-            This container starts empty. The JavaScript will build HTML blocks out of out state data
-            and put the blocks here.
+            This container starts empty
             -->
             <div id=""issues-container></div>
         </section>
 
         <section id="events-section">
             <h2>Municipal Event Tracker</h2>
-            <!--
-            Captures a simple calendar title and calendar date constraint. 
-            -->
+            
 
             <form id="event-form">
                 <h3>Schedule an Event</h3>
@@ -81,9 +77,7 @@
                 <input type="date" id="event-date" required>
                 <button type="submit">Add Event</button>
             </form>
-            <!--
-            An unordered list tag where JavaScript will add event item list tags
-            whenever the page loads or updates.-->
+            
 
             <ul id="events-container"></ul>
         </section>

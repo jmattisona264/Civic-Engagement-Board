@@ -9,12 +9,12 @@ app.use(express.json());
 app.use(express.static(__dirname));
 
 
-// GET Endpoint: Pulls clean, sorted database columns straight out of the cloud
+// Pulls clean and sorted database columns out of the cloud
 app.get('/api/data', async (req, res) => {
     try {
         // Query both tables simultaneously from our cloud database
         const dbIssues = await prisma.issue.findMany({
-            orderBy: { votes: 'desc' } // Delivers highest-voted items first automatically!
+            orderBy: { votes: 'desc' } // Delivers highest-voted items first automatically
         });
         const dbEvents = await prisma.event.findMany();
 
@@ -28,7 +28,7 @@ app.get('/api/data', async (req, res) => {
     }
 });
 
-// POST Endpoint: Creates a permanent data row in the cloud Issue table
+// Creates a permanent data row in the cloud Issue table
 app.post('/api/issues', async (req, res) => {
     const { title, desc, category } = req.body;
     
@@ -52,7 +52,7 @@ app.post('/api/issues', async (req, res) => {
     }
 });
 
-// POST Endpoint: Creates a permanent data row in the cloud Event table
+// Creates a permanent data row in the cloud Event table
 app.post('/api/events', async (req, res) => {
     const { title, date } = req.body;
     
@@ -71,7 +71,7 @@ app.post('/api/events', async (req, res) => {
     }
 });
 
-// POST Endpoint: Atomically increments a target entry vote metric directly inside PostgreSQL
+//
 app.post('/api/issues/:id/upvote', async (req, res) => {
     const issueId = parseInt(req.params.id);
 
@@ -79,7 +79,7 @@ app.post('/api/issues/:id/upvote', async (req, res) => {
         const updatedIssue = await prisma.issue.update({
             where: { id: issueId },
             data: {
-                votes: { increment: 1 } // Native SQL atomic update operation
+                votes: { increment: 1 } // SQL update operation
             }
         });
         res.status(200).json({ message: "Vote tracked globally!", currentVotes: updatedIssue.votes });

@@ -3,7 +3,7 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-// POST: Create a new municipal event
+//Create a new municipal event
 export async function POST(request) {
   try {
     const body = await request.json();

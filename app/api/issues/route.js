@@ -3,7 +3,34 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-// POST: Create a new community issue
+// Get issues merged with External Weather Data
+export async function GET() {
+  try {
+    const issues = await prisma.issue.findMany({
+      orderBy: { id: 'desc'}
+  });
+    //Fetch external data from weather API
+  const weatherRes = await fetch(
+    'https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m',
+    { next: {revalidate: 300} } //Cache data for 5 minutes
+  );
+
+  let weatherData= null;
+  if (weatherRes.ok) {
+    const weatherJson = await weatherRes.json();
+    weatherData = weatherJson.current_weather;
+  }
+  return NextResponse.json({
+    issues,
+    weather: weatherData
+  }, { status: 200 });
+
+} catch (error) {
+  return NextResponse.json({ error: 'Failed to fetch issues and weather data' }, { status: 500});
+}
+}
+
+//Create a new community issue
 export async function POST(request) {
   try {
     const body = await request.json();
@@ -19,7 +46,7 @@ export async function POST(request) {
   }
 }
 
-// PATCH: Upvote an issue
+//Upvote an issue
 export async function PATCH(request) {
   try {
     const body = await request.json();

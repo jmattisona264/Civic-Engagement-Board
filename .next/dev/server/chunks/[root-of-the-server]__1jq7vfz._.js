@@ -54,7 +54,9 @@ var __TURBOPACK__imported__module__$5b$externals$5d2f40$prisma$2f$client__$5b$ex
 ;
 const prisma = new __TURBOPACK__imported__module__$5b$externals$5d2f40$prisma$2f$client__$5b$external$5d$__$2840$prisma$2f$client$2c$__cjs$2c$__$5b$project$5d2f$node_modules$2f40$prisma$2f$client$29$__["PrismaClient"]();
 async function GET() {
+    let weatherData = null;
     try {
+        // Fetch DB records
         const issues = await prisma.issue.findMany({
             orderBy: {
                 createdAt: 'desc'
@@ -65,9 +67,23 @@ async function GET() {
                 date: 'asc'
             }
         });
+        //Fetch external Weather API
+        try {
+            const weatherRes = await fetch('https://api.open-meteo.com/v1/forecast?latitude=35.2271&longitude=-80.8431&current_weather=true', {
+                cache: 'no-store'
+            });
+            if (weatherRes.ok) {
+                const weatherJson = await weatherRes.json();
+                weatherData = weatherJson.current_weather || null;
+            }
+        } catch (apiError) {
+            console.error('Failed to fetch external weather API:', apiError);
+        }
+        //Return issues, events, and weather
         return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
             issues,
-            events
+            events,
+            weather: weatherData
         }, {
             status: 200
         });
