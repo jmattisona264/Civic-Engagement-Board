@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 46, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/jmatt/civic-engagement-board/app/api/events/route.js"],"sourcesContent":["import { NextResponse } from 'next/server';\r\nimport { PrismaClient } from '@prisma/client';\r\n\r\nconst prisma = new PrismaClient();\r\n\r\n//Create a new municipal event\r\nexport async function POST(request) {\r\n  try {\r\n    const body = await request.json();\r\n    const { title, date } = body;\r\n\r\n    const newEvent = await prisma.event.create({\r\n      data: { title, date }\r\n    });\r\n\r\n    return NextResponse.json(newEvent, { status: 201 });\r\n  } catch (error) {\r\n    return NextResponse.json({ error: 'Failed to create event' }, { status: 500 });\r\n  }\r\n}"],"names":["prisma","POST","request","body","json","title","date","newEvent","event","create","data","status","error"],"mappings":";;;;AAAA;AACA;;;AAEA,MAAMA,SAAS,IAAI,sMAAY;AAGxB,eAAeC,KAAKC,OAAO;IAChC,IAAI;QACF,MAAMC,OAAO,MAAMD,QAAQE,IAAI;QAC/B,MAAM,EAAEC,KAAK,EAAEC,IAAI,EAAE,GAAGH;QAExB,MAAMI,WAAW,MAAMP,OAAOQ,KAAK,CAACC,MAAM,CAAC;YACzCC,MAAM;gBAAEL;gBAAOC;YAAK;QACtB;QAEA,OAAO,gJAAY,CAACF,IAAI,CAACG,UAAU;YAAEI,QAAQ;QAAI;IACnD,EAAE,OAAOC,OAAO;QACd,OAAO,gJAAY,CAACR,IAAI,CAAC;YAAEQ,OAAO;QAAyB,GAAG;YAAED,QAAQ;QAAI;IAC9E;AACF"}}]
-}
